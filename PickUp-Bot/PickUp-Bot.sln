@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PickUp-Bot", "PickUp-Bot\PickUp-Bot.vcxproj", "{87DD23DC-FF91-4DB0-8CEC-8C98FB9DB643}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87DD23DC-FF91-4DB0-8CEC-8C98FB9DB643}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87DD23DC-FF91-4DB0-8CEC-8C98FB9DB643}.Debug|Win32.Build.0 = Debug|Win32
+		{87DD23DC-FF91-4DB0-8CEC-8C98FB9DB643}.Release|Win32.ActiveCfg = Release|Win32
+		{87DD23DC-FF91-4DB0-8CEC-8C98FB9DB643}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
