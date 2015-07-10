@@ -218,13 +218,30 @@ bool GetServerName()
 }
 #endif
 
+DWORD GetModuleSize()
+{
+	DWORD ModuleSize;
+
+	DWORD Base = (DWORD)hPInstance;
+	DWORD PEOffset = *(DWORD*)(Base + 0x3C);
+	
+	MODULEINFO module_info;
+	memset(&module_info, 0, sizeof(module_info));
+	if (GetModuleInformation(GetCurrentProcess(), hPInstance, &module_info, sizeof(module_info)))
+		ModuleSize = module_info.SizeOfImage;
+	else
+		ModuleSize = *(DWORD*)(Base + PEOffset + 0x1C) + Base;
+
+	return ModuleSize - 0x1000;
+}
+
 __forceinline bool DataCompare(const unsigned char* address, const unsigned char* signature, const char* mask)
 {
-	while(*mask)
+	while (*mask)
 	{
-		if(*reinterpret_cast<const unsigned int*>(mask) == 'xxxx')
+		if (*reinterpret_cast<const unsigned int*>(mask) == 'xxxx')
 		{
-			if(*reinterpret_cast<const unsigned int*>(address) != *reinterpret_cast<const unsigned int*>(signature))
+			if (*reinterpret_cast<const unsigned int*>(address) != *reinterpret_cast<const unsigned int*>(signature))
 				return false;
 
 			address += 4;
@@ -232,9 +249,9 @@ __forceinline bool DataCompare(const unsigned char* address, const unsigned char
 			mask += 4;
 			continue;
 		}
-		else if(*reinterpret_cast<const unsigned short*>(mask) == 'xx')
+		else if (*reinterpret_cast<const unsigned short*>(mask) == 'xx')
 		{
-			if(*reinterpret_cast<const unsigned short*>(address) != *reinterpret_cast<const unsigned short*>(signature))
+			if (*reinterpret_cast<const unsigned short*>(address) != *reinterpret_cast<const unsigned short*>(signature))
 				return false;
 
 			address += 2;
@@ -257,7 +274,7 @@ __forceinline bool DataCompare(const unsigned char* address, const unsigned char
 
 DWORD FindPatternInternal(const unsigned char* address, size_t size, const unsigned char* signature, const char* mask, unsigned short ignore)
 {
-	WORD	Ign = 0;
+	WORD Ign = 0;
 	for(size_t i = 0; i < size; i++)
 	{
 		if(DataCompare(address + i, signature, mask))

@@ -4,8 +4,8 @@ void SetAddies()
 {
 	DWORD Base = (DWORD)hPInstance;
 	const unsigned char* StartBase = reinterpret_cast<const unsigned char*>(Base + 0x1000);
-	DWORD PEOffset = *(DWORD*)(Base + 0x3C);
-	DWORD SizeOfCode = *(DWORD*)(Base + PEOffset + 0x1C) + Base;
+
+	DWORD SizeOfCode = GetModuleSize();
 
 	switch (GetSearchPattern())
 	{
@@ -31,7 +31,7 @@ void SetAddies()
 		default:
 		{
 			BYTE P_PickCloseItem [] = { 0x8B, 0x0D, 0x00, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0xFF, 0xE9, 0x00, 0x00, 0x00, 0x00, 0x51, 0x8B, 0x4C, 0x24, 0x00, 0x8D, 0x04, 0x24, 0x50 };
-			char M_PickCloseItem [] = "xx---xx---xx----xxxx-xxxx";
+			char M_PickCloseItem[] = "xx---xx---xx----xxxx-xxxx";
 			DWORD B_PickCloseItem = FindPattern(StartBase, SizeOfCode, P_PickCloseItem, M_PickCloseItem, 1);
 			PlayerPointer = *(DWORD*) (B_PickCloseItem + 2);
 			PickCloseItemCall = RelativeToAbsolute(B_PickCloseItem + 7);

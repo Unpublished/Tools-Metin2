@@ -6,8 +6,8 @@ void SetAddies()
 {
 	DWORD Base = (DWORD)hPInstance;
 	const unsigned char* StartBase = reinterpret_cast<const unsigned char*>(Base + 0x1000);
-	DWORD PEOffset = *(DWORD*)(Base + 0x3C);
-	DWORD SizeOfCode = *(DWORD*)(Base + PEOffset + 0x1C) + Base;
+
+	DWORD SizeOfCode = GetModuleSize();
 
 	DWORD dwSeachPattern;
 	GetExitCodeThread(hSearchPatternThread, &dwSeachPattern);

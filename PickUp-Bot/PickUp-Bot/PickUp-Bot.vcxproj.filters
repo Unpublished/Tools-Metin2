@@ -24,9 +24,6 @@
     <ClInclude Include="GUI-Variables.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Metin2-Funcs.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="PickUp-Bot.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>

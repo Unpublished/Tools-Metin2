@@ -88,7 +88,6 @@
     <ClInclude Include="GUI-Funcs.h" />
     <ClInclude Include="GUI-Variables.h" />
     <ClInclude Include="GUI.h" />
-    <ClInclude Include="Metin2-Funcs.h" />
     <ClInclude Include="PickUp-Bot.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Variables.h" />
